@@ -1,18 +1,22 @@
+import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
 
+# Load Gemini API key from environment variable
+GEMINI_API_KEY = os.getenv("AIzaSyD8xk5AOzwgj3hh4ViyTElBadqNFqkMrnQ")  # Set this in Railway or .env file
+
+if not GEMINI_API_KEY:
+    raise ValueError("Gemini API key is missing. Please set the GEMINI_API_KEY environment variable.")
+
 app = Flask(__name__)
 CORS(app)  # Allow frontend access
-
-# Replace with your actual Gemini API key
-GEMINI_API_KEY = "AIzaSyD8xk5AOzwgj3hh4ViyTElBadqNFqkMrnQ"
 
 # Function to get disease prediction from Gemini API
 def get_disease_prediction(symptoms):
     url = f"https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key={GEMINI_API_KEY}"
 
-    prompt = f"Identify the possible disease based on these symptoms: {symptoms}. Provide only the disease name and a list of precautions as points separated in lines      [[[[(Please don't show stars separated(*) again and again in result)]]]] ."
+    prompt = f"Identify the possible disease based on these symptoms: {symptoms}. Provide only the disease name and a list of precautions as points separated in lines [[[[(Please don't show stars separated(*) again and again in result)]]]] ."
 
     headers = {"Content-Type": "application/json"}
     payload = {"contents": [{"parts": [{"text": prompt}]}]}
@@ -66,4 +70,4 @@ def predict():
     })
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)  # Set debug=False for production deployment
