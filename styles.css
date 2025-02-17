@@ -1,0 +1,231 @@
+/* Root Variables */
+:root {
+    --bg-color: #edf1f5;
+    --text-color: #222;
+    --glass-bg: rgba(255, 255, 255, 0.3);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --btn-primary: linear-gradient(135deg, #4caf50, #2e7d32);
+    --btn-hover: linear-gradient(135deg, #388e3c, #1b5e20);
+    --btn-secondary: linear-gradient(135deg, #0073e6, #005bb5);
+    --btn-secondary-hover: linear-gradient(135deg, #005bb5, #003c8f);
+    --header-bg: rgba(255, 255, 255, 0.4);
+    --nav-bg: rgba(255, 255, 255, 0.8);
+    --nav-hover: rgba(255, 255, 255, 1);
+}
+
+/* Dark Mode */
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: #f4f4f4;
+    --glass-bg: rgba(30, 30, 30, 0.3);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --btn-primary: linear-gradient(135deg, #66bb6a, #43a047);
+    --btn-hover: linear-gradient(135deg, #43a047, #2e7d32);
+    --btn-secondary: linear-gradient(135deg, #2196f3, #1e88e5);
+    --btn-secondary-hover: linear-gradient(135deg, #1e88e5, #1565c0);
+    --header-bg: rgba(30, 30, 30, 0.6);
+    --nav-bg: rgba(30, 30, 30, 0.9);
+    --nav-hover: rgba(50, 50, 50, 1);
+}
+
+/* General Styles */
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--header-bg);
+    backdrop-filter: blur(10px);
+    padding: 15px 40px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar List */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px; /* More spacing between buttons */
+    padding: 0;
+    margin: 0;
+}
+
+/* Navbar Buttons */
+.nav-btn {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 14px 28px; /* Increased padding */
+    border-radius: 50px;
+    background: var(--btn-primary);
+    color: white;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    text-align: center;
+}
+
+.nav-btn:hover {
+    background: var(--btn-hover);
+    transform: scale(1.08); /* Slight zoom effect */
+}
+
+/* Toggle Mode Button */
+#toggle-mode {
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+#toggle-mode:hover {
+    transform: rotate(20deg);
+}
+
+/* Centered Main Container */
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    margin-top: 80px;
+}
+
+/* Glassmorphic Card */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Main Buttons */
+.btn {
+    padding: 16px 35px;
+    background: var(--btn-primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: 0.3s ease-in-out;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    background: var(--btn-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Secondary Buttons */
+.btn.secondary {
+    background: var(--btn-secondary);
+}
+
+.btn.secondary:hover {
+    background: var(--btn-secondary-hover);
+}
+
+/* Prediction Results */
+.results {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    text-align: left;
+    width: 100%;
+    animation: slideUp 0.5s ease-in-out;
+}
+
+/* Disease & Precautions Text */
+.results h3,
+.results p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin: 5px 0;
+    color: black; /* Default for light mode */
+}
+
+/* Change Text Color in Dark Mode */
+.dark-mode .results h3,
+.dark-mode .results p {
+    color: white !important;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background: var(--glass-bg);
+    border-top: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    margin-top: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 15px;  /* More spacing in mobile view */
+    }
+
+    .nav-btn {
+        padding: 12px 24px;
+        font-size: 18px;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+}
